@@ -1,0 +1,65 @@
+﻿@model List<DapperEstate.Dtos.ProductDtos.ResultProductDto>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            @foreach(var item in Model)
+            {
+                
+                <div class="col-md-4 ftco-animate">
+                <div class="properties">
+                    <img />
+                        <a href="property-single.html" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(@item.CoverImage);">
+                        <div class="icon d-flex justify-content-center align-items-center">
+                            <span class="icon-search2"></span>
+                        </div>
+                    </a>
+                    <div class="text p-3">
+                            @if (item.PropStatus == true)
+                            {
+                                <span class="status sale">Satılık</span>
+                            }
+                            else
+                            {
+                                <span class="status rent">Kiralık</span>
+                            }
+
+                        <div class="d-flex">
+                            <div class="one">
+                                <h3><a href="property-single.html">@item.Title</a></h3>
+                                <p>@item.PropType</p>
+                                <p>@item.City</p>
+                            </div>
+                            <div class="two">
+                                <span class="price" style="width:10px;">₺@item.Price</span>
+                            </div>
+                        </div>
+                        <p>@item.Description2</p>
+                        <hr>
+                        <p class="bottom-area d-flex">
+                            <span><i class="flaticon-selection"></i> İlan Sahibi : &nbsp; @item.NameSurname</span>
+                          
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            }
+        </div>
+        <div class="row mt-5">
+            <div class="col text-center">
+                <div class="block-27">
+                    <ul>
+                        <li><a href="#">&lt;</a></li>
+                        <li class="active"><span>1</span></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&gt;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

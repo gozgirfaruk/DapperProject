@@ -1,0 +1,23 @@
+﻿@using DapperEstate.Dtos.SliderDtos
+@model List<ResultSliderDto>
+
+<section class="home-slider owl-carousel">
+	@foreach(var item in Model)
+	{
+		<div class="slider-item" style="background-image:url('@item.ImageUrl')">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row no-gutters slider-text align-items-md-end align-items-center justify-content-end">
+				<div class="col-md-6 text p-4 ftco-animate">
+					<h1 class="mb-3">@item.Header</h1>
+					<span class="location d-block mb-3"><i class="icon-my_location"></i> @item.Address</span>
+					<p>@item.Description</p>
+					<span class="price">@item.Price</span>
+					<a href="#" class="btn-custom p-3 px-4 bg-primary">Detaylar <span class="icon-plus ml-1"></span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	}
+	
+</section>
