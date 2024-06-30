@@ -1,0 +1,35 @@
+﻿@using DapperEstate.Dtos.TestimonialDtos
+@model List<ResultTestimonialDto>
+
+<section class="ftco-section testimony-section bg-light">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8 ftco-animate">
+				<div class="row ftco-animate">
+					<div class="col-md-12">
+						<div class="carousel-testimony owl-carousel ftco-owl">
+							@foreach(var item in Model)
+							{
+								<div class="item">
+								<div class="testimony-wrap py-4 pb-5">
+									<div class="user-img mb-4" style="background-image: url('@item.ImageUrl')">
+										<span class="quote d-flex align-items-center justify-content-center">
+											<i class="icon-quote-left"></i>
+										</span>
+									</div>
+									<div class="text text-center">
+										<p class="mb-4">@item.Description</p>
+										<p class="name">@item.NameSurname</p>
+										<span class="position">@item.Title</span>
+									</div>
+								</div>
+							</div>
+							}
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

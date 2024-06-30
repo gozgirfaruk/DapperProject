@@ -1,0 +1,14 @@
+﻿@using DapperEstate.Dtos.TagDtos
+@model List<ResultTagByProductDto>
+
+
+<div class="sidebar-box ftco-animate">
+    <h3>İlan Etiketleri</h3>
+    <div class="tagcloud">
+        @foreach(var item in Model)
+        {
+            <a href="#" class="tag-cloud-link">@item.TagTitle</a>
+        }
+        
+    </div>
+</div>

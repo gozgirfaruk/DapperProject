@@ -1,4 +1,6 @@
 ﻿using DapperEstate.Dtos.ProductDtos;
+using DapperEstate.Dtos.SingleProductDtos;
+
 
 namespace DapperEstate.Services
 {
@@ -6,5 +8,15 @@ namespace DapperEstate.Services
 	{
 		Task<List<ResultProductDto>> GetAllProductsAsync();
 		Task<List<ResultRecentProductDto>> RecentProductListAsync();
+		Task<List<LastFourProductDto>> LastFourProductListAsync();
+		Task<List<CategoryCountDto>> CategoryCountListAsync();
+        List<SingleProductImageDto> SingleProductImageList(int id);
+
+		Task<List<ResultSingleProductDto>> SingleProductDetail(int id);
+
+		int StatisticsOne();
+		int StatisticsThree();
+		int StatisticsFour();
+		int StatisticsTwo();
 	}
 }

@@ -1,0 +1,13 @@
+﻿@using DapperEstate.Dtos.SingleProductDtos
+@model List<CategoryCountDto>
+
+<div class="sidebar-box ftco-animate">
+    <div class="categories">
+        <h3>İlan Kategorileri</h3>
+        @foreach(var item in Model)
+        {
+             <li><a href="#">@item.PropType <span>(@item.Tekrar)</span></a></li>
+        }
+       
+    </div>
+</div>

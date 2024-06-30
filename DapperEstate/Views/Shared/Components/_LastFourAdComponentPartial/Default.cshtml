@@ -1,0 +1,54 @@
+﻿@using DapperEstate.Dtos.ProductDtos
+@model List<LastFourProductDto>
+
+<section class="ftco-section bg-light">
+	<div class="container">
+		<div class="row justify-content-center mb-5 pb-3">
+			<div class="col-md-7 heading-section text-center ftco-animate">
+				<span class="subheading">Mülkiyetler</span>
+				<h2 class="mb-4">En Son Eklenen İlanlar</h2>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid">
+		<div class="row">
+			@* ProductID,Title,Price,CoverImage,PropType,PropStatus,City,Description2 *@
+			@foreach(var item in Model)
+			{
+				<div class="col-sm col-md-6 col-lg ftco-animate">
+				<div class="properties">
+					<a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(@item.CoverImage);">
+						<div class="icon d-flex justify-content-center align-items-center">
+							<span class="icon-search2"></span>
+						</div>
+					</a>
+					<div class="text p-3">
+							@if (item.PropStatus == true)
+							{
+								<span class="status sale">Satılık</span>
+							}
+							else
+							{
+								<span class="status rent">Kiralık</span>
+							}
+
+						<div class="d-flex">
+							<div class="one">
+								<h3><a href="#">@item.Title</a></h3>
+								<p>@item.City - @item.PropType</p>
+							</div>
+							<div class="two">
+								<span class="price">₺@item.Price</span>
+							</div>
+						</div>
+						<p>@item.Description2</p>
+						<hr>
+					
+					</div>
+				</div>
+			</div>
+			}
+			
+		</div>
+	</div>
+</section>
