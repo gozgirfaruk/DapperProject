@@ -9,12 +9,10 @@ namespace DapperEstate.Controllers
 	public class PropertyController : Controller
 	{
         private readonly IProductService _productService;
-        private readonly ISearchProductService _searchService;
 
-		public PropertyController(IProductService productService, ISearchProductService searchService)
+		public PropertyController(IProductService productService)
 		{
 			_productService = productService;
-			_searchService = searchService;
 		}
 
         public async Task<IActionResult> PropertyList(int sayfa = 1)
@@ -29,5 +27,7 @@ namespace DapperEstate.Controllers
             return View();
         }
 
-	}
+      
+
+    }
 }
