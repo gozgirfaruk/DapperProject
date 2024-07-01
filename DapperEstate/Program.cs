@@ -11,7 +11,7 @@ builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 builder.Services.AddScoped<ITagService, TagService>();
-builder.Services.AddScoped<ISearchProductService, SearchProductService>();
+builder.Services.AddScoped<ISearchService, SearchService>();
 
 var app = builder.Build();
 

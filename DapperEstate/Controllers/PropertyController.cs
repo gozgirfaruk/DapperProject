@@ -1,5 +1,4 @@
 ﻿using DapperEstate.Dtos.ProductDtos;
-using DapperEstate.Dtos.SearchDtos;
 using DapperEstate.Services;
 using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
@@ -26,6 +25,8 @@ namespace DapperEstate.Controllers
             ViewBag.Id = id;
             return View();
         }
+
+       
 
       
 

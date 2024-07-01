@@ -1,0 +1,77 @@
+﻿@using DapperEstate.Dtos.ProductDtos
+@model List<ResultProductDto>
+@{
+    ViewData["Title"] = "ListFilter";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<body>
+
+
+    <div class="hero-wrap" style="background-image: url('/royalestate/images/bg_1.jpg');">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text align-items-center justify-content-center">
+                <div class="col-md-9 ftco-animate text-center">
+                    <p class="breadcrumbs"><span class="mr-2"><a href="#">Ana Sayfa</a></span> <span>Evler</span></p>
+                    <h1 class="mb-3 bread">Filtrelenmiş İlanlar</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @* @await Component.InvokeAsync("_PropListComponentPartial") *@
+
+    <section class="ftco-section bg-light">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-4 ftco-animate">
+                        <div class="properties">
+                            <img />
+                            <a href="/Property/PropertyDetail/@item.ProductID" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url(@item.CoverImage);">
+                                <div class="icon d-flex justify-content-center align-items-center">
+                                    <span class="icon-search2"></span>
+                                </div>
+                            </a>
+                            <div class="text p-3">
+                                @if (item.PropStatus == true)
+                                {
+                                    <span class="status sale">Satılık</span>
+                                }
+                                else
+                                {
+                                    <span class="status rent">Kiralık</span>
+                                }
+
+                                <div class="d-flex">
+                                    <div class="one">
+                                        <h3><a href="property-single.html">@item.Title</a></h3>
+                                        <p>@item.PropType</p>
+                                        <p>@item.City</p>
+                                    </div>
+                                    <div class="two">
+                                        <span class="price" style="width:10px;">₺@item.Price</span>
+                                    </div>
+                                </div>
+                                <p>@item.Description2</p>
+                                <hr>
+                                <p class="bottom-area d-flex">
+                                    <span><i class="flaticon-selection"></i> İlan Sahibi : &nbsp; @item.NameSurname</span>
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
+          
+        </div>
+    </section>
+
+
+</body>
+

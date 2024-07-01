@@ -1,0 +1,91 @@
+﻿@using DapperEstate.Dtos.ProductDtos
+@model CreateSearchDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<section class="ftco-search">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 search-wrap">
+				<h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span> Search Property</h2>
+				<form asp-action="ListFilter" class="search-property" method="post">
+					<div class="row">
+						<div class="col-md align-items-end">
+							<div class="form-group">
+								<label for="#">Kelime İle Ara</label>
+								<div class="form-field">
+									<div class="icon"><span class="icon-pencil"></span></div>
+									<input type="text" class="form-control" placeholder="Anahtar Kelime" asp-for="Title">
+								</div>
+							</div>
+						</div>
+						<div class="col-md align-items-end">
+							<div class="form-group">
+								<label for="#">Şehire Göre Ara</label>
+								<div class="form-field">
+									<div class="icon"><span class="icon-pencil"></span></div>
+									<input type="text" class="form-control" placeholder="Şehir ID" asp-for="LocationID">
+								</div>
+							</div>
+						</div>
+						<div class="col-md align-items-end">
+							<div class="form-group">
+								<label for="#">İlan Tipi</label>
+								<div class="form-field">
+									<div class="select-wrap">
+										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+										<select class="form-control" asp-for="PropID">
+											<option value="">İlan Tipi Seç</option>
+											<option value="1">Daire</option>
+											<option value="2">Villa</option>
+											<option value="3">Plaza</option>
+											<option value="4">Rezidans</option>
+											<option value="5">Müstakil Ev</option>
+											<option value="6">Bağ Bahçe</option>
+											
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md align-items-end">
+							<div class="form-group">
+								<label for="#">İlan Tipi</label>
+								<div class="form-field">
+									<div class="select-wrap">
+										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+										<select class="form-control" asp-for="AgentID">
+											<option value="">İlan Sahibi Seç</option>
+											<option value="1">Ömer Faruk Gözegir</option>
+											<option value="2">Gül Acar</option>
+											<option value="3">Maide Şimşek</option>
+											<option value="4">Merve Güler</option>
+											<option value="5">İlyas Altun</option>
+											<option value="6">Kadir Koca</option>
+											<option value="7">İrem Sessiz</option>
+
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+					
+						<div class="col-md align-self-end">
+							<div class="form-group">
+								<div class="form-field">
+									<input type="submit" value="Ara" class="form-control btn btn-primary">
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>
+

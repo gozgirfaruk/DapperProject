@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "SearchProduct";
+    Layout = "~/Views/Shared/_UILayout.cshtml";
+}
+
+<section class="ftco-search">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 search-wrap">
+                <h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span> Emlak Ara</h2>
+
+                <div class="row">
+                    <div class="col-md align-items-end">
+                        <div class="form-group">
+                            <label for="#">Kelime İle Ara</label>
+                            <div class="form-field">
+                                <div class="icon"><span class="icon-pencil"></span></div>
+                                <input type="text" class="form-control" placeholder="Anahtar Kelime" id="txttitle">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md align-items-end">
+                        <div class="form-group">
+                            <label for="#">Şehir</label>
+                            <div class="form-field">
+                                <div class="icon"><span class="icon-pencil"></span></div>
+                                <input type="text" class="form-control" placeholder="Şehir ID" id="txtlocationid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md align-self-end">
+                        <div class="form-group">
+                            <div class="form-field">
+                                <input type="button" value="Ara" class="form-control btn btn-primary" id="btnsearch">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="resultproduct">
+
+</div>
+
+<script>
+    $.("#btnsearch").click(x=>{
+        let values = {
+            Title =$("#txttitle").val(),
+            CityID=$("#txtlocationid").val()
+        };
+
+        $.ajax({
+            contentType: "application/json",
+            dataType: "json",
+            url: "/Product/GetProduct",
+            data: values,
+            success: function (func) {
+                let w = jQuery.parseJSON(func);
+                console.log(w);
+
+                let tableHtml = "<table class=table table-bordered><tr><th>Şehir ID</th><th>Title</th><th>Ülke Adi</th></tr>";
+                $.each(w, (index, value) => {
+                    tableHtml += `<tr><td>${value.CityID}</td><td>${value.Title}</td></tr>`
+                });
+                tableHtml += `</table>`;
+                $("resultproduct").html(tableHtml);
+            };
+
+        });
+</script>
