@@ -1,0 +1,43 @@
+﻿@model List<ResultSliderDto>
+@{
+    ViewData["Title"] = "SliderList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Pano İlanları</div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Görsel</th>
+                        <th scope="col">Başlık</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Fiyat</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.SliderID</th>
+                            <td><img src="@item.ImageUrl" style="height:50px;width:50px; border-radius:15px;"/></td>
+                            <td>@item.Header</td>
+                            <td>@item.Address</td>
+                            <td><a href="/Default/Index/" class="btn btn-info">Göz At</a></td>
+                            <td><a href="/Admin/Slider/UpdateSlider/@item.SliderID" class="btn btn-secondary">Güncelle</a></td>
+                            <td><a href="/Admin/Slider/DeleteSlider/@item.SliderID" class="btn btn-danger">Sil</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <a href="/Admin/Slider/CreateSlider/" class="btn btn-success">Yeni Öne Çıkan Oluştur</a>
+        </div>
+    </div>
+</div>
+

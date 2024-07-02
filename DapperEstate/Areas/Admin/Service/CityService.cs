@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using DapperEstate.Areas.Admin.Dtos.CityDtos;
 using DapperEstate.Context;
+using System.Net.Http.Headers;
 
 namespace DapperEstate.Areas.Admin.Service
 {
@@ -13,9 +14,13 @@ namespace DapperEstate.Areas.Admin.Service
 			_context = context;
 		}
 
-		public Task CreateCityAsync(CreateCityDto city)
+		public async Task CreateCityAsync(CreateCityDto city)
 		{
-			throw new NotImplementedException();
+			string query = "Insert Into TblLocation (City) values (@p1)";
+			var parameters = new DynamicParameters();
+			parameters.Add("@p1",city.City);
+			var connection = _context.CreateConnection();
+			await connection.ExecuteAsync(query,parameters);
 		}
 
 		public async Task<List<ResultCityDto>> GetAllCityAsync()
@@ -24,6 +29,15 @@ namespace DapperEstate.Areas.Admin.Service
 			var connection = _context.CreateConnection();
 			var values = await connection.QueryAsync<ResultCityDto>(query);
 			return	values.ToList();
+		}
+
+		public async Task DeleteCityAsync(int id)
+		{
+			string query = "Delete From TblLocation Where LocationID=@p1";
+			var parameters = new DynamicParameters();
+			parameters.Add("@p1",id);
+			var connection = _context.CreateConnection();
+			await connection.ExecuteAsync(query,parameters);
 		}
 	}
 }

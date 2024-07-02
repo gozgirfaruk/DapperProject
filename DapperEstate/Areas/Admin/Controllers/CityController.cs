@@ -1,4 +1,5 @@
-﻿using DapperEstate.Areas.Admin.Service;
+﻿using DapperEstate.Areas.Admin.Dtos.CityDtos;
+using DapperEstate.Areas.Admin.Service;
 using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
 
@@ -19,6 +20,23 @@ namespace DapperEstate.Areas.Admin.Controllers
 		{
 			var values =await _cityService.GetAllCityAsync();
 			return View(values.ToPagedList(sayfa,10));
+		}
+		public IActionResult CreateCity()
+		{
+			return View();
+		}
+		[HttpPost]
+		public async Task<IActionResult> CreateCity(CreateCityDto dto)
+		{
+			await _cityService.CreateCityAsync(dto);
+			return RedirectToAction("CityList");
+		}
+
+		[Route("{id}")]
+		public async Task<IActionResult> DeleteCity(int id)
+		{
+			await _cityService.DeleteCityAsync(id);
+			return RedirectToAction("CityList");
 		}
 	}
 }

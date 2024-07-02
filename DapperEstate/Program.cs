@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddScoped<DapperContext>();
-builder.Services.AddScoped<ISliderService, SliderService>();
+builder.Services.AddScoped<ISliderService, SliderService>();    
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 builder.Services.AddScoped<ITagService, TagService>();
@@ -16,6 +16,7 @@ builder.Services.AddScoped<ISearchService, SearchService>();
 
 builder.Services.AddScoped<IPropService,PropService>();
 builder.Services.AddScoped<ICityService, CityService>();
+builder.Services.AddScoped<IAdminSliderService, AdminSliderService>();
 
 var app = builder.Build();
 

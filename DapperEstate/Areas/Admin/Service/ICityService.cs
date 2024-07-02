@@ -6,5 +6,6 @@ namespace DapperEstate.Areas.Admin.Service
 	{
 		Task<List<ResultCityDto>> GetAllCityAsync();
 		Task CreateCityAsync(CreateCityDto city);
+		Task DeleteCityAsync(int id);
 	}
 }
