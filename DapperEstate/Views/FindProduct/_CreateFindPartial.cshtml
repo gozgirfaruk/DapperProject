@@ -1,10 +1,5 @@
 ﻿@using DapperEstate.Dtos.ProductDtos
 @model CreateSearchDto
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_UILayout.cshtml";
-}
-
 <section class="ftco-search">
     <div class="container">
         <div class="row">
@@ -17,7 +12,11 @@
                             <div class="icon"><span class="icon-pencil"></span></div>
                             <input type="text" class="form-control" placeholder="Anahtar Kelime" asp-for="Title">
                         </div>
-                     
+                        &nbsp; &nbsp; &nbsp;
+                        <div class="form-field">
+                            <div class="icon"><span class="icon-pencil"></span></div>
+                            <input type="text" class="form-control" placeholder="Şehir ID" asp-for="LocationID">
+                        </div>
                         &nbsp; &nbsp; &nbsp;
                         <div class="form-field">
                             <div class="select-wrap">
@@ -47,6 +46,7 @@
                                     <option value="5">İlyas Altun</option>
                                     <option value="6">Kadir Koca</option>
                                     <option value="7">İrem Sessiz</option>
+
                                 </select>
                             </div>
                         </div>
@@ -54,22 +54,14 @@
                         <div class="form-field">
                             <div class="select-wrap">
                                 <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                <select class="form-control" asp-for="Price">
-                                    <option value="">Fiyat Aralığı Seç</option>
-                                    <option value="1">+1.000</option>
-                                    <option value="5">+5.000 </option>
-                                    <option value="20">+20.000</option>
-                                    <option value="50">+50.000 </option>
-                                    <option value="150">+150.000</option>
-                                 
+                                <select class="form-control" asp-for="AgentID">
+                                    <option value="">İlan Tipi</option>
+                                    <option value="1">Kiralık</option>
+                                    <option value="0">Satılık</option>
                                 </select>
                             </div>
                         </div>
-                        &nbsp; &nbsp; &nbsp;
-                        <div class="form-field">
-                            <div class="icon"><span class="icon-pencil"></span></div>
-                            <input type="text" class="form-control" placeholder="Şehir Adı" asp-for="City">
-                        </div>
+
                     </div>
 
                     <br />
@@ -88,5 +80,3 @@
         </div>
     </div>
 </section>
-
-@await Component.InvokeAsync("_LastFourAdComponentPartial")

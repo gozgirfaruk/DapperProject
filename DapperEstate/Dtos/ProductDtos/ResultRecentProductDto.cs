@@ -6,6 +6,7 @@
 		public string Title { get; set; }
 		public decimal Price { get; set; }
 		public string CoverImage { get; set; }
+        public string City { get; set; }
         public string PropType { get; set; }
         public bool PropStatus { get; set; }
         public bool Recent { get; set; }

@@ -15,12 +15,13 @@ namespace DapperEstate.Services
 
         public async Task<List<ResultProductDto>> SearchProduct(CreateSearchDto createSearchDto)
         {
-            string query = "select *,NameSurname,City from TblProduct Inner Join TblAgent On TblProduct.AgentID=TblAgent.AgentID Inner Join TblLocation On TblProduct.LocationID=TblLocation.LocationID where Title=@p1 OR PropID=@p2 OR TblProduct.AgentID=@p3 Or TblProduct.LocationID=@p4";
+            string query = "select *,City from TblProduct Inner Join TblAgent On TblProduct.AgentID=TblAgent.AgentID Inner Join TblLocation On TblProduct.LocationID=TblLocation.LocationID where TblProduct.Title=@p1 Or TblProduct.PropID=@p2 Or TblProduct.AgentID=@p3 Or TblLocation.City=@p4 Or TblProduct.Price>=@p5";
             var parameters = new DynamicParameters();
             parameters.Add("@p1", createSearchDto.Title);
             parameters.Add("@p2", createSearchDto.PropID);
             parameters.Add("@p3", createSearchDto.AgentID);
-            parameters.Add("@p4", createSearchDto.LocationID);
+            parameters.Add("@p4", createSearchDto.City);
+            parameters.Add("@p5", createSearchDto.Price);
             var connection = _context.CreateConnection();   
             var values = await connection.QueryAsync<ResultProductDto>(query, parameters);
             return values.ToList();

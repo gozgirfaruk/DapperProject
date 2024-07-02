@@ -1,0 +1,37 @@
+﻿@using DapperEstate.Areas.Admin.Dtos.PropertyDtos
+@model List<ResultPropDto>
+@{
+    ViewData["Title"] = "PropList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Emlak Tür Yönetimi</div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Emlak Başlığı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                         <tr>
+                        <td>@item.PropertyID</td>
+                        <td>@item.PropType</td>
+                        <td><a href="/Admin/Property/DeleteProp/@item.PropertyID" class="btn btn-warning">Sil</a></td>
+                    </tr>
+                    }
+                   
+                </tbody>
+            </table>
+            <a href="/Admin/Property/CreateProp/" class="btn btn-primary">Yeni Başlık Oluştur</a>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,52 @@
+﻿@using DapperEstate.Areas.Admin.Dtos.CityDtos
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<ResultCityDto>
+
+@{
+    ViewData["Title"] = "CityList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Şehir Yönetimi</div>
+        </div>
+        <div class="card-body">
+
+            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("CityList", new { sayfa }), new PagedListRenderOptions
+       {
+           LiElementClasses = new[] { "page-item" },
+           PageClasses = new[] { "page-link" }
+       })
+
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Şehir ID</th>
+                        <th scope="col">Şehir Adı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.LocationID</td>
+                            <td>@item.City</td>
+                            <td><a href="/Admin/City/DeleteCity/@item.LocationID" class="btn btn-warning">Sil</a></td>
+                        </tr>
+                    }
+
+                </tbody>
+
+            </table>
+            
+        
+            <a href="/Admin/City/CreateCity/" class="btn btn-primary">Yeni Şehir Ekle</a>
+        </div>
+    </div>
+</div>
+

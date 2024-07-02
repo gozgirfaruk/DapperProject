@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html>
+@await Html.PartialAsync("/Views/_AdminLayoutPartial/_HeadPartial.cshtml")
+
+<body>
+    <div class="wrapper">
+        <div class="main-header">
+            <div class="logo-header">
+                <a href="index.html" class="logo">
+                    RealEstate Admin
+                </a>
+                <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse" data-target="collapse" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <button class="topbar-toggler more"><i class="la la-ellipsis-v"></i></button>
+            </div>
+
+        </div>
+        @await Html.PartialAsync("/Views/_AdminLayoutPartial/_SidebarPartial.cshtml")
+
+        <div class="main-panel">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+@await Html.PartialAsync("/Views/_AdminLayoutPartial/_ScriptsPartial.cshtml")
+</html>
+

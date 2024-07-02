@@ -32,7 +32,7 @@ namespace DapperEstate.Services
 
 		public async Task<List<LastFourProductDto>> LastFourProductListAsync()
 		{
-			string query = "Select ProductID,Title,Price,CoverImage,PropType,PropStatus,City,Description2 From TblProduct Inner Join TblLocation On TblProduct.LocationID = TblLocation.LocationID  Inner Join TblProperty On TblProduct.PropID = TblProperty.PropertyID";
+			string query = "Select ProductID,Title,Price,CoverImage,PropType,PropStatus,City From TblProduct Inner Join TblLocation On TblProduct.LocationID = TblLocation.LocationID  Inner Join TblProperty On TblProduct.PropID = TblProperty.PropertyID";
 			var connection = _context.CreateConnection();	
 			var values = await connection.QueryAsync<LastFourProductDto>(query);
 			return values.OrderByDescending(x=>x.ProductID).Take(4).ToList();
@@ -40,7 +40,7 @@ namespace DapperEstate.Services
 
 		public async Task<List<ResultRecentProductDto>> RecentProductListAsync()
 		{
-			string query = "select Title,Price,CoverImage,Recent,PropType From TblProduct Inner Join TblProperty On TblProduct.PropID=TblProperty.PropertyID where Recent=1";
+			string query = "select Title,Price,CoverImage,Recent,PropType,PropStatus,City From TblProduct Inner Join TblProperty On TblProduct.PropID=TblProperty.PropertyID Inner Join TblLocation On TblProduct.LocationID=TblLocation.LocationID where Recent=1";
 			var connection = _context.CreateConnection();
 			var values = await connection.QueryAsync<ResultRecentProductDto>(query);
 			return values.ToList();
@@ -64,7 +64,7 @@ namespace DapperEstate.Services
 
         public int StatisticsFour()
 		{
-			string query = "Select Count(*) From TblProduct where Recent=0";
+			string query = "Select Count(*) From TblProduct where PropStatus=1";
 			var connection = _context.CreateConnection();
 			int values = connection.ExecuteScalar<int>(query);
 			return values;
@@ -80,7 +80,7 @@ namespace DapperEstate.Services
 
 		public int StatisticsThree()
 		{
-			string query = "Select Count(*) From TblProduct where Recent=1";
+			string query = "Select Count(*) From TblProduct where PropStatus=0";
 			var connection = _context.CreateConnection();
 			int values = connection.ExecuteScalar<int>(query);
 			return values;
@@ -88,7 +88,7 @@ namespace DapperEstate.Services
 
 		public int StatisticsTwo()
 		{
-			string query = "select Price From TblProduct Order By Price";
+			string query = "Select Price From TblProduct Order By Price Desc";
 			var connection = _context.CreateConnection();
 			var values = connection.ExecuteScalar<int>(query);
 			return values;

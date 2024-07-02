@@ -1,3 +1,4 @@
+using DapperEstate.Areas.Admin.Service;
 using DapperEstate.Context;
 using DapperEstate.Services;
 
@@ -12,6 +13,9 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ITestimonialService, TestimonialService>();
 builder.Services.AddScoped<ITagService, TagService>();
 builder.Services.AddScoped<ISearchService, SearchService>();
+
+builder.Services.AddScoped<IPropService,PropService>();
+builder.Services.AddScoped<ICityService, CityService>();
 
 var app = builder.Build();
 
@@ -33,5 +37,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();

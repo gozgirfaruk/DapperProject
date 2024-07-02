@@ -1,0 +1,30 @@
+﻿@using DapperEstate.Areas.Admin.Dtos.PropertyDtos
+@model CreatePropDto
+@{
+    ViewData["Title"] = "CreateProp";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+
+	<div class="card">
+		<div class="card-header">
+			<div class="card-title">Emlak Başlığı Ekleme </div>
+		</div>
+		<div class="card-body">
+			
+			<form class="form-control" method="post">
+				<div class="form-group">
+					<input type="text" class="form-control input-pill" name="PropType"  placeholder="Emlak Başlığı Giriniz" required/>
+				</div>
+				<div class="card-action">
+					<button class="btn btn-success">Ekle</button>
+					<a href="/Admin/Property/PropList/" class="btn btn-secondary">Vazgeç</a>
+				</div>
+			</form>
+			
+		</div>
+	
+	</div>
+</div>
+
