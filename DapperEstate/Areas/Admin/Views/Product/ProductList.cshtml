@@ -1,0 +1,89 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc
+@using X.PagedList.Mvc.Core
+@model IPagedList<AResultProductDto>
+@{
+    ViewData["Title"] = "ProductList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Pano İlanları</div>
+        </div>
+        <a href="/Admin/Slider/CreateSlider/" class="btn btn-success">Yeni İlan Oluştur</a>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Görsel</th>
+                        <th scope="col">İlan Başlığı</th>
+                        <th scope="col">Bölge</th>
+                        <th scope="col">Emlak Tipi</th>
+                        <th scope="col">Fiyat</th>
+                        <th scope="col">İlan Tipi</th>
+                        <th scope="col">Öne Çıkarıldı</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.ProductID</th>
+                            <td><img src="@item.CoverImage" style="height:50px;width:50px; border-radius:15px;" /></td>
+                            <td>@item.Title</td>
+                            <td>@item.City</td>
+                            <td>@item.PropType</td>
+                            <td>@item.Price</td>
+                            <td>
+                                @if (item.PropStatus == true)
+                                {
+                                    <a href="/Admin/Product/ChangeToSale/@item.ProductID">
+                                        <span class="badge badge-info">Kiralık</span>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a href="/Admin/Product/ChangeToRent/@item.ProductID">
+                                        <span class="badge badge-primary">Satılık</span>
+                                    </a>
+
+
+                                }
+                            </td>
+                            <td>
+                                @if (item.Recent == true)
+                                {
+                                    <a href="/Admin/Product/NoShowRoomProduct/@item.ProductID">
+                                        <span class="badge badge-success">Evet</span>
+                                    </a>
+
+                                }
+                                else
+                                {
+                                    <a href="/Admin/Product/YesShowRoomProduct/@item.ProductID">
+                                        <span class="badge badge-danger">Hayır</span>
+                                    </a>
+                                }
+                            </td>
+
+                            <td><a href="#" class="btn btn-outline-success btn-round">İncele</a> </td>
+                            <td><a href="#" class="btn btn-outline-warning btn-round">Güncelle</a> </td>
+                            <td><a href="/Admin/Product/DeleteProduct/@item.ProductID" class="btn btn-outline-danger btn-round">Sil</a> </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        
+            @Html.PagedListPager((IPagedList)Model,sayfa=>Url.Action("ProductList",new {sayfa}),new PagedListRenderOptions
+            {
+           LiElementClasses = new[] { "page-item" },
+           PageClasses = new[] { "page-link" }
+            })
+        </div>
+    </div>
+</div>
+

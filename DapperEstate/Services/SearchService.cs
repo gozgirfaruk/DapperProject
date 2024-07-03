@@ -20,7 +20,7 @@ namespace DapperEstate.Services
             parameters.Add("@p1", createSearchDto.Title);
             parameters.Add("@p2", createSearchDto.PropID);
             parameters.Add("@p3", createSearchDto.AgentID);
-            parameters.Add("@p4", createSearchDto.City);
+            parameters.Add("@p4", createSearchDto.City.ToString());
             parameters.Add("@p5", createSearchDto.Price);
             var connection = _context.CreateConnection();   
             var values = await connection.QueryAsync<ResultProductDto>(query, parameters);

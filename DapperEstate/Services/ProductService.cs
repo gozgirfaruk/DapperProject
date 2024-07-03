@@ -2,6 +2,7 @@
 using DapperEstate.Context;
 using DapperEstate.Dtos.ProductDtos;
 using DapperEstate.Dtos.SingleProductDtos;
+using DapperEstate.Models;
 
 namespace DapperEstate.Services
 {
@@ -30,7 +31,21 @@ namespace DapperEstate.Services
 			return values.ToList();
 		}
 
-		public async Task<List<LastFourProductDto>> LastFourProductListAsync()
+        public async Task<List<ResultProductDto>> GetAllPropertyByFilterAsync(SearchPropertyViewModel model)
+        {
+			string query = @"select Title,Price,CoverImage,City,PropID From TblProduct Inner Join TblLocation On TblProduct.LocationID=TblLocation.LocationID where City=@p1 OR (Price between @minprice and @maxprice) OR PropID=@p3";
+			var parameters = new DynamicParameters();
+			parameters.Add("@p1", model.Location);
+			parameters.Add("@minprice", model.MinPrice);
+			parameters.Add("@maxprice", model.MaxPrice);
+			parameters.Add("@p3", model.PropID);
+			var connect= _context.CreateConnection();
+			var values = await connect.QueryAsync<ResultProductDto>(query,parameters);
+			return values.ToList();
+
+        }
+
+        public async Task<List<LastFourProductDto>> LastFourProductListAsync()
 		{
 			string query = "Select ProductID,Title,Price,CoverImage,PropType,PropStatus,City From TblProduct Inner Join TblLocation On TblProduct.LocationID = TblLocation.LocationID  Inner Join TblProperty On TblProduct.PropID = TblProperty.PropertyID";
 			var connection = _context.CreateConnection();	

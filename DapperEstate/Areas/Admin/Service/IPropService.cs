@@ -9,5 +9,7 @@ namespace DapperEstate.Areas.Admin.Service
 
         Task DeletePropAsync(int id);
         Task CreatePropDAsync(CreatePropDto dto);
+        Task UpdatePropAsync(UpdatePropDto dto);
+        Task<GetPropByIdDto> GetPropByIdAsync(int id);
     }
 }

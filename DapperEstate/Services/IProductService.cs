@@ -1,5 +1,6 @@
 ﻿using DapperEstate.Dtos.ProductDtos;
 using DapperEstate.Dtos.SingleProductDtos;
+using DapperEstate.Models;
 
 
 namespace DapperEstate.Services
@@ -11,8 +12,9 @@ namespace DapperEstate.Services
 		Task<List<LastFourProductDto>> LastFourProductListAsync();
 		Task<List<CategoryCountDto>> CategoryCountListAsync();
         List<SingleProductImageDto> SingleProductImageList(int id);
+		Task<List<ResultProductDto>> GetAllPropertyByFilterAsync(SearchPropertyViewModel model);
 
-		Task<List<ResultSingleProductDto>> SingleProductDetail(int id);
+        Task<List<ResultSingleProductDto>> SingleProductDetail(int id);
 
 		int StatisticsOne();
 		int StatisticsThree();

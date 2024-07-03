@@ -1,0 +1,33 @@
+﻿@model GetPropByIdDto
+@{
+    ViewData["Title"] = "UpdateProp";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Emlak Başlığı Düzenleme </div>
+        </div>
+        <div class="card-body">
+            <form asp-action="UpdateProp" asp-controller="Property" asp-area="Admin">
+
+                <div class="form-group">
+
+                    <input asp-for="PropertyID" type="hidden" />
+                    <br />
+
+                    <label>Emlak Tür Başlığı</label>
+                    <input class="form-control input-pill" asp-for="PropType" />
+
+                </div>
+                <button type="submit" class="btn btn-success">Güncelle</button>
+            </form>
+
+
+        </div>
+
+    </div>
+</div>
+

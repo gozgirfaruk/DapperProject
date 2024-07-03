@@ -49,7 +49,7 @@ namespace DapperEstate.Areas.Admin.Controllers
 		}
 
 		[HttpPost]
-		public async Task<IActionResult> UpdateSlider(UpdateSliderDto dto)
+		public async Task<IActionResult> UpdateSliderIndex(UpdateSliderDto dto)
 		{
 			await _sliderService.UpdateSliderAsync(dto);
 			return RedirectToAction("SliderList");

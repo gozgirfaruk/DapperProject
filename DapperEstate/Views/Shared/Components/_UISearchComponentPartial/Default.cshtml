@@ -1,0 +1,71 @@
+﻿@model SearchPropertyViewModel
+<section class="ftco-search">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 search-wrap">
+				<h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span> İlan Ara</h2>
+				<form action="/Properties/Index" class="search-property">
+					<div class="row">
+
+						<div class="col-md align-items-end">
+							<div class="form-group">
+								<label for="#">Lokasyon</label>
+								<div class="form-field">
+									<div class="icon"><span class="icon-my_location"></span></div>
+									<input type="text"  name="Location" class="form-control" placeholder="Lokasyon Adı">
+								</div>
+							</div>
+						</div>
+						<div class="col-md align-items-end">
+							<div class="form-group">
+								<label for="#">İlan Türü</label>
+								<div class="form-field">
+									<div class="select-wrap">
+										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+										<select asp-for="PropID"  id="" class="form-control">
+											<option value="">İlan Türü</option>
+											<option value="1" style="color:black">Daire</option>
+											<option value="2" style="color:black">Müstakil Ev</option>
+											<option value="3" style="color:black">Villa</option>
+											<option value="4" style="color:black">Rezidans</option>
+											<option value="5" style="color:black">Ofis</option>
+											<option value="6" style="color:black">Yazlık</option>
+											<option value="7" style="color:black">Tarım Alanı</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md align-items-end">
+							<div class="form-group">
+								<label for="#">Minimum Fiyat</label>
+								<div class="form-field">
+									<div class="select-wrap">
+										<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+										<input  asp-for="MinPrice" class="form-control" placeholder="Minimum Fiyat">
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="#">Maximum Fiyat</label>
+							<div class="form-field">
+								<div class="select-wrap">
+									<div class="icon"><span class="ion-ios-arrow-down"></span></div>
+									<input  asp-for="MaxPrice" class="form-control" placeholder="Maximum Fiyat">
+								</div>
+							</div>
+						</div>
+						<div class="col-md align-self-end">
+							<div class="form-group">
+								<div class="form-field">
+									<button type="submit" class="form-control btn btn-primary">Ara</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</section>

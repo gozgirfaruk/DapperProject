@@ -19,7 +19,8 @@
         </div>
         <div class="card-body">
 
-            <form class="form-control" method="post">
+            <form class="form-control" method="post" asp-action="UpdateSliderIndex" asp-controller="Slider" asp-area="Admin">
+                <input type="hidden" asp-for="SliderID"/>
                 <div class="form-group">
                     <input type="text" class="form-control input-pill" asp-for="Header" />
                 </div>
@@ -36,7 +37,7 @@
                     <input class="form-control input-pill" asp-for="Price" />
                 </div>
                 <div class="card-action">
-                    <button type="submit" class="btn btn-success">Ekle</button>
+                    <button type="submit" class="btn btn-success">Güncelle</button>
                     <a href="/Admin/Slider/SliderList" class="btn btn-secondary">Vazgeç</a>
                 </div>
             </form>

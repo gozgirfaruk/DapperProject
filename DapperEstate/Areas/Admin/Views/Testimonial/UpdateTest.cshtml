@@ -1,0 +1,40 @@
+﻿@model GetTestByIDDto
+@{
+    ViewData["Title"] = "UpdateTest";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-md-12">
+	<div class="card">
+		<div class="card-header">
+			<div class="card-title">Yorum Düzenleme Sayfası</div>
+		</div>
+		<div class="card-body">
+
+			<form class="form-control" method="post"  >
+				<input asp-for="TestimonialID" type="hidden"/>
+				<div class="form-group">
+					<label>Yorum sahibi</label>
+					<input type="text" class="form-control input-pill" asp-for="NameSurname" />
+				</div>
+				<div class="form-group">
+					<label>Ünvan</label>
+					<input type="text" class="form-control input-pill" asp-for="Title" />
+				</div>
+				<div class="form-group">
+					<label>Görsel Linki</label>
+					<input type="text" class="form-control input-pill" asp-for="ImageUrl" />
+				</div>
+				<div class="form-group">
+					<label>Gelen Yorum</label>
+					<textarea class="form-control input-pill" asp-for="Description" rows="5"></textarea>
+				</div>
+				<div class="card-action">
+					<button class="btn btn-success">Güncelle</button>
+					<a href="/Admin/Testimonial/TestList/" class="btn btn-secondary">Vazgeç</a>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,48 @@
+﻿@model List<ResultTestListDto>
+@{
+    ViewData["Title"] = "TestList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Gelen Yorumlar</div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Profil</th>
+                        <th scope="col">İsim/Soyisim</th>
+                        <th scope="col">Ünvan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+
+                        <tr>
+                            <th>@item.TestimonialID</th>
+                            <td><img src="@item.ImageUrl" style="height:50px;width:50px; border-radius:15px;" /></td>
+                            <td>@item.NameSurname</td>
+                            <td>@item.Title</td>
+                            <td><a href="/Admin/Testimonial/UpdateTest/@item.TestimonialID" class="btn btn-secondary">Yorumu Gör</a></td>
+                            <td><a href="/Admin/Testimonial/UpdateTest/@item.TestimonialID" class="btn btn-info">Güncelle</a></td>
+                            <td><a href="/Admin/Testimonial/DeleteTest/@item.TestimonialID" class="btn btn-danger">Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

@@ -38,5 +38,6 @@ namespace DapperEstate.Areas.Admin.Controllers
 			await _cityService.DeleteCityAsync(id);
 			return RedirectToAction("CityList");
 		}
+
 	}
 }

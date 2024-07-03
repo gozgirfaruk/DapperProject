@@ -38,5 +38,22 @@ namespace DapperEstate.Areas.Admin.Controllers
             await _propService.CreatePropDAsync(dto);
             return RedirectToAction("PropList");
         }
+		[HttpGet]
+		[Route("{id}")]
+        public async Task<IActionResult> UpdateProp(int id)
+        {
+            var values = await _propService.GetPropByIdAsync(id);
+            return View(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UpdateProp(UpdatePropDto dto)
+        {
+            await _propService.UpdatePropAsync(dto);
+            return RedirectToAction("PropList");
+        }
+
     }
+
+
 }
