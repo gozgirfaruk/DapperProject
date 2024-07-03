@@ -1,0 +1,48 @@
+﻿@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model PagedList<ResultTagDto>
+@{
+    ViewData["Title"] = "NoIDTagList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+ 
+}
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Tüm Etiketler</div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">İlan No</th>
+                        <th scope="col">İlan Adı </th>
+                        <th scope="col">İlan Etiket</th>
+                  
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.TagID</th>
+                            <td>@item.Title</td>
+                            <td>@item.TagTitle</td>
+
+                            <td><a href="/Admin/Slider/UpdateSlider/@item.ProductID" class="btn btn-secondary">Güncelle</a></td>
+                            <td><a href="/Admin/Tags/DeleteTag/@item.TagID" class="btn btn-danger">Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            @Html.PagedListPager((IPagedList)Model, sayfa => Url.Action("NoIDTagList", new { sayfa }),
+                     new PagedListRenderOptions
+            {
+                LiElementClasses = new[] { "page-item" },
+                PageClasses = new[] { "page-link" } 
+            })
+        </div>
+    </div>
+</div>
+

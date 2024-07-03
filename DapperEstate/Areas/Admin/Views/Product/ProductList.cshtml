@@ -12,7 +12,7 @@
         <div class="card-header">
             <div class="card-title">Pano İlanları</div>
         </div>
-        <a href="/Admin/Slider/CreateSlider/" class="btn btn-success">Yeni İlan Oluştur</a>
+        <a href="/Admin/Product/CreateProduct/" class="btn btn-success">Yeni İlan Oluştur</a>
         <div class="card-body">
             <table class="table table-hover">
                 <thead>
@@ -25,6 +25,8 @@
                         <th scope="col">Fiyat</th>
                         <th scope="col">İlan Tipi</th>
                         <th scope="col">Öne Çıkarıldı</th>
+                        <th scope="col">Etiketler</th>
+                        <th scope="col">Görseller</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -68,9 +70,11 @@
                                     </a>
                                 }
                             </td>
+                            <td><a href="/Admin/Tags/TagList/@item.ProductID" class="btn btn-outline-dark"><i class="fa-regular fa-tags fa-xl"></i></a></td>
+                            <td><a href="/Admin/Pictures/PictureList/@item.ProductID" class="btn btn-outline-dark"><i class="fa-regular fa-images fa-xl"></i></a></td>
 
-                            <td><a href="#" class="btn btn-outline-success btn-round">İncele</a> </td>
-                            <td><a href="#" class="btn btn-outline-warning btn-round">Güncelle</a> </td>
+                            <td><a href="/Property/PropertyDetail/@item.ProductID" class="btn btn-outline-success btn-round">İncele</a> </td>
+                            <td><a href="/Admin/Product/UpdateProduct/@item.ProductID" class="btn btn-outline-warning btn-round">Güncelle</a> </td>
                             <td><a href="/Admin/Product/DeleteProduct/@item.ProductID" class="btn btn-outline-danger btn-round">Sil</a> </td>
                         </tr>
                     }

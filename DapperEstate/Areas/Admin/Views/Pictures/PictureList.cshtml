@@ -1,0 +1,38 @@
+﻿@model List<ResultPictureDto>
+@{
+    ViewData["Title"] = "PictureList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Görsel Listesi</div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                          
+                            <td><img src="@item.ImageUrl" style="height:75px;width:75px;border-radius:15px;"/></td>
+                            <td><a href="/Admin/Slider/UpdateSlider/@item.ProductID" class="btn btn-secondary">Güncelle</a></td>
+                            <td><a href="/Admin/Slider/DeleteSlider/@item.ProductID" class="btn btn-danger">Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a href="/Admin/Slider/CreateSlider/" class="btn btn-success">Yeni Görsel Oluştur</a>
+        </div>
+    </div>
+</div>
+
+

@@ -6,11 +6,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-
-
-    
-
-
     <section class="ftco-section">
         <div class="container">
             <div class="row">
@@ -20,7 +15,6 @@
                         
                         @await Component.InvokeAsync("_SingleProductContentComponentPartial",new {id=ViewBag.Id})
                       
-
                     </div>
                 </div> <!-- .col-md-8 -->
                 <div class="col-lg-4 sidebar ftco-animate">
@@ -28,13 +22,10 @@
 
                     @await Component.InvokeAsync("_DetailTagsComponentPartial", new {id=ViewBag.Id})
 
-                    
-
                 </div>
             </div>
         </div>
     </section>
-
 </body>
 </html>
 

@@ -1,5 +1,7 @@
 using DapperEstate.Areas.Admin.Service;
+using DapperEstate.Areas.Admin.Service.AdminPictureService;
 using DapperEstate.Areas.Admin.Service.AdminProductService;
+using DapperEstate.Areas.Admin.Service.AdminTagService;
 using DapperEstate.Context;
 using DapperEstate.Services;
 
@@ -20,6 +22,9 @@ builder.Services.AddScoped<ICityService, CityService>();
 builder.Services.AddScoped<IAdminSliderService, AdminSliderService>();
 builder.Services.AddScoped<IAdminTestimonialService, AdminTestimonialService>();
 builder.Services.AddScoped<IAProductService,AProductService>();
+builder.Services.AddScoped<IAgentService, AgentService>();
+builder.Services.AddScoped<IAdminTagService, AdminTagService>();
+builder.Services.AddScoped<IPictureService, PictureService>();
 
 var app = builder.Build();
 

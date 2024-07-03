@@ -1,5 +1,6 @@
 ﻿using DapperEstate.Areas.Admin.Dtos.SliderDtos;
 using DapperEstate.Areas.Admin.Service;
+using DapperEstate.Areas.Admin.Service.AdminProductService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DapperEstate.Areas.Admin.Controllers

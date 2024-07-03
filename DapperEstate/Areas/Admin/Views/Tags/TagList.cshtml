@@ -1,0 +1,35 @@
+﻿@model List<ResultTagDto>
+@{
+    ViewData["Title"] = "TagList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <div class="card-title">Etiket Listesi</div>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.ProductID</th>
+                            <td>@item.TagTitle</td>
+                            <td><a href="/Admin/Slider/UpdateSlider/@item.ProductID" class="btn btn-secondary">Güncelle</a></td>
+                            <td><a href="/Admin/Slider/DeleteSlider/@item.ProductID" class="btn btn-danger">Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <a href="/Admin/Slider/CreateSlider/" class="btn btn-success">Yeni Etiket Oluştur</a>
+        </div>
+    </div>
+</div>
+

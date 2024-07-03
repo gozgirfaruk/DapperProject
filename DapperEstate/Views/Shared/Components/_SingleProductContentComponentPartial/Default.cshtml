@@ -8,26 +8,8 @@
     <p class="rate mb-4">
         <span class="loc"><a href="#"><i class="icon-map"></i> @item.City</a></span>
     </p>
-    <p>@item.Description2</p>
-    <div class="d-md-flex mt-5 mb-5">
-        <ul>
-            <li><span>İlan Türü: </span>@item.PropType</li>
-            <li><span>Fiyat : </span> ₺ @item.Price</li>
-        </ul>
-        <ul class="ml-md-5">
-                @if (item.PropStatus == true)
-                {
-                    <li><span>İlan Tipi: </span> Kiralık Mesken</li>
-                }
-                else
-                {
-                    <li><span>İlan Tipi: </span> Satılık Mesken</li>
-                }
-                
-            <li><span>İlan Sahibi : </span> @item.NameSurname</li>
-        </ul>
-    </div>
-    
+    <p>@Html.Raw(item.Description2)</p>
+   
 </div>
 <div class="col-md-12 properties-single ftco-animate mb-5 mt-4">
     <h3 class="mb-4">Bakış Atın</h3>
